@@ -18,10 +18,22 @@ use App\Providers\BungieProvider;
 
 use Exception;
 
+/**
+ * Class CommandController
+ * @package App\Http\Controllers
+ */
 class CommandController
 {
+
+    /**
+     * @var Command
+     */
     private $command;
 
+    /**
+     * @param Request $request
+     * @return string
+     */
     public function parseRequest(Request $request)
     {
         try
@@ -178,6 +190,11 @@ class CommandController
         }
     }
 
+    /**
+     * @param $Arr1
+     * @param $Arr2
+     * @return mixed
+     */
     private function MergeArrays($Arr1, $Arr2)
     {
         foreach($Arr2 as $key => $Value)
@@ -190,6 +207,10 @@ class CommandController
         return $Arr1;
     }
 
+    /**
+     * @return array
+     * @throws Exception
+     */
     private function runCommand()
     {
         $aPlayers = [];
@@ -224,6 +245,10 @@ class CommandController
         );
     }
 
+    /**
+     * @return array
+     * @throws Exception
+     */
     public function getPlayers()
     {
         $aPlayers = [];
@@ -293,6 +318,10 @@ class CommandController
         return $aPlayers;
     }
 
+    /**
+     * @param $res
+     * @return string
+     */
     private function returnerino($res)
     {
         return $res . '<hr>Load time: '. (microtime(true) - LARAVEL_START);
